@@ -5,8 +5,8 @@
   "module": "dist/quib.esm.js",
   "browser": "dist/quib.js",
   "author": {
-    "email": "aayekeen@gmail.com",
-    "name": "Yekeen Ajeigbe"
+    "email": "matt@saowapan.com",
+    "name": "Matt Gould"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.47",

@@ -2,5 +2,6 @@ module.exports = {
   transformIgnorePatterns: [
     '<rootDir>/(node_modules|coverage)/'
   ],
-  verbose: true
+  verbose: true,
+  testURL: 'http://localhost'
 }

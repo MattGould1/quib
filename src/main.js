@@ -56,7 +56,14 @@ const composeArgs = (args, specificSchema) => {
   const composedArgs = []
 
   Object.keys(argsForSchema).forEach(arg => {
-    composedArgs.push(`${arg}:${JSON.stringify(argsForSchema[arg])}`)
+    let argValue
+    if (constants.ENUM_VALUES.indexOf(argsForSchema[arg]) !== -1) {
+      argValue = argsForSchema[arg]
+    } else {
+      argValue = JSON.stringify(argsForSchema[arg])
+    }
+
+    composedArgs.push(`${arg}:${argValue}`)
   })
 
   return composedArgs.length > 0

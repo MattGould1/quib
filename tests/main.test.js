@@ -9,6 +9,43 @@ describe('quib', () => {
     }).toThrowError(constants.PROJECT_NAMESPACE + constants.MESSAGES.EMPTY_SCHEMA)
   })
 
+  it('Returns the expected formatted GraphQL query with variables when ENUM arguments are passed', () => {
+    const expectedFormat = `{
+    getAllArtists (limit:10) {
+      artist {name,power}
+    }queryArtists (ID_DESC:ID_DESC) {
+      id,image,name
+    }
+  }`
+
+    const quibFormat = quib({
+      getAllArtists: {
+        artist: {
+          name: '',
+          power: false
+        }
+      },
+
+      queryArtists: {
+        id: '',
+        image: '',
+        name: ''
+      }
+    }, {
+      args: {
+        getAllArtists: {
+          limit: 10
+        },
+
+        queryArtists: {
+          ID_DESC: 'ID_DESC'
+        }
+      }
+    })
+
+    expect(quibFormat).toBe(expectedFormat)
+  })
+
   it('Returns the expected formatted GraphQL query when a simple schema is passed', () => {
     const expectedFormat = `{
     getName {
